@@ -1,3 +1,5 @@
+package typescript
+
 import japgolly.scalagraal.GraalJs._
 import japgolly.scalagraal.{ContextSync, _}
 import org.webjars.WebJarAssetLocator
@@ -14,7 +16,7 @@ object Main extends App {
   private val sourceFile = Parser(ctx).parse(SourceUtil.requireFileOnClasspath(fileToParse))
 
   println("-" * 100)
-  println(sourceFile)
+  println(sourceFile.map(_.statements.map(_.kind).mkString(", ")))
   println("-" * 100)
 
 }
